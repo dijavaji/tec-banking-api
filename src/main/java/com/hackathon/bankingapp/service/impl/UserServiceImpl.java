@@ -61,7 +61,7 @@ public class UserServiceImpl implements IUserService{
 			Account account = new Account();
 			account.setBalance(0.0);
 			account.setCreatedBy(BankingConstants.CREATED_BY);
-			account.setUserId(newUser.getId());
+			account.setUser(newUser);
 			account.setAccountNumber(UUID.randomUUID());
 			
 			Account newAcc = this.accRepository.save(account);

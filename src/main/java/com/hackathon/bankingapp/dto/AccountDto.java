@@ -1,5 +1,11 @@
 package com.hackathon.bankingapp.dto;
 
-public class AccountDto {
+import lombok.Data;
 
+@Data
+public class AccountDto {
+	
+	private String accountNumber;
+	private Double balance;
+	
 }

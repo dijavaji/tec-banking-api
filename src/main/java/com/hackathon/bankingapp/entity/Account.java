@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -56,12 +58,12 @@ public class Account {
 	@Column(name="STATUS")
 	private Boolean status;
 	
-	@Column(name="USERID",nullable=false)
-	private Integer userId;
+	//@Column(name="USERID",nullable=false)
+	//private Integer userId;
 	
-	//@ManyToOne
-	//@JoinColumn(name="CUSTOMERID",nullable=false)
-	//private User user;
+	@ManyToOne
+	@JoinColumn(name="USERID",nullable=false)
+	private User user;
 	
 	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JoinColumn(name = "ACCOUNTID")
