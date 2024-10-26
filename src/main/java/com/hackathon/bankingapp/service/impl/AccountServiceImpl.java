@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.hackathon.bankingapp.common.exception.BankingException;
 import com.hackathon.bankingapp.dto.AccountDto;
 import com.hackathon.bankingapp.entity.Account;
+import com.hackathon.bankingapp.mapper.AccountMapper;
 import com.hackathon.bankingapp.repository.dao.IAccountDao;
 import com.hackathon.bankingapp.service.IAccountService;
 
@@ -18,7 +19,7 @@ public class AccountServiceImpl implements IAccountService{
 	@Override
 	public AccountDto findOneByMailUser(String mail) throws BankingException {
 		Account account = accountDao.findOneAccounByMailUser(mail);
-		return null;
+		return AccountMapper.mapToAccountDto(account);
 	}
 
 }

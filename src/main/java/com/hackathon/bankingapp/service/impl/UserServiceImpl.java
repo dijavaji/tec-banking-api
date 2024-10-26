@@ -19,6 +19,7 @@ import com.hackathon.bankingapp.mapper.UserMapper;
 import com.hackathon.bankingapp.repository.IAccountRepository;
 import com.hackathon.bankingapp.repository.IUserRepository;
 import com.hackathon.bankingapp.repository.IUserTypeRepository;
+import com.hackathon.bankingapp.repository.dao.IAccountDao;
 import com.hackathon.bankingapp.service.IUserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,8 @@ public class UserServiceImpl implements IUserService{
 	private IAccountRepository accRepository;
 	@Autowired
     private PasswordEncoder passwordEncoder;
+	@Autowired
+	private IAccountDao accountDao;
 	
 	@Override
 	@Transactional
@@ -75,8 +78,8 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public UserDto getUserByEmail(String email) throws BankingException {
-		User user = userRepository.findByEmail(email).get();
-		return UserMapper.mapToUserDto(user, UUID.randomUUID());
+		Account acc= this.accountDao.findOneAccounByMailUser(email);
+		return UserMapper.mapToUserDto(acc.getUser(), acc.getAccountNumber());
 	}
 
 }

@@ -11,8 +11,10 @@ public class AccountMapper {
 		return account;
 	}
 	
-	public static AccountDto mapToAccountDto(AccountDto acc) {
+	public static AccountDto mapToAccountDto(Account acc) {
 		AccountDto accountDto = new AccountDto();
+		accountDto.setAccountNumber(acc.getAccountNumber().toString());
+		accountDto.setBalance(acc.getBalance());
 		return accountDto;
 	}
 

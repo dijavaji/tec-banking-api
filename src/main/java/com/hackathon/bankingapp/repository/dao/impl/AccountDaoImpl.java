@@ -44,12 +44,12 @@ public class AccountDaoImpl implements IAccountDao{
 			
 			query.where(filterPredicates.toArray(new Predicate[0]));
 			result = em.createQuery(query).getSingleResult();
-			log.info("consulta findByStockId " + result);
+			log.info("consulta findOneAccounByMailUser " + result.getAccountNumber());
 			
 		
 		}catch(Exception e) {
-			log.error("Error al momento de consultar la linea de inventario " ,e);
-			throw new BankingException("Error al momento de consultar la linea de inventario" ,e);
+			log.error("Error al momento de consultar la cuenta " ,e);
+			throw new BankingException("Error al momento de consultar la cuenta " ,e);
 		}
 		return result;
 	}

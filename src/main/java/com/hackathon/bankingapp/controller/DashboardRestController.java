@@ -41,7 +41,7 @@ public class DashboardRestController {
 	}
 	
 	@GetMapping("/account")
-	public ResponseEntity<?> getAccount(@RequestHeader (name="Authorization") String authParam) {
+	public ResponseEntity<?> getAccountByEmail(@RequestHeader (name="Authorization") String authParam) {
 		String token = this.tokenprovider.recoverToken(authParam);
 		String mail = tokenprovider.getUsername(token);
 		log.info("busco acc {}", mail);
