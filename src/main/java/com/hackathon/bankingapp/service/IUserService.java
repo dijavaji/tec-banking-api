@@ -8,6 +8,6 @@ public interface IUserService {
 	
 	UserDto createUser(SignUpDto signUpDto) throws BankingException;
 	
-	SignUpDto getUserByEmail(String email) throws BankingException;
+	UserDto getUserByEmail(String email) throws BankingException;
 
 }

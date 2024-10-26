@@ -74,9 +74,9 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public SignUpDto getUserByEmail(String email) throws BankingException {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDto getUserByEmail(String email) throws BankingException {
+		User user = userRepository.findByEmail(email).get();
+		return UserMapper.mapToUserDto(user, UUID.randomUUID());
 	}
 
 }

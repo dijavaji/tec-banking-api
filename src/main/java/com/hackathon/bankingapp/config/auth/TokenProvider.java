@@ -9,10 +9,12 @@ import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class TokenProvider {
@@ -60,6 +62,14 @@ public class TokenProvider {
 				.addClaims(extra).signWith(key()).compact();
 		
 	}
-
 	
+	public String recoverToken(String bearerToken) {
+		//String bearerToken = request.getHeader("Authorization");
+
+        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")){
+            return bearerToken.substring(7, bearerToken.length());
+        }
+
+        return null;
+	}
 }
